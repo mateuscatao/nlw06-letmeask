@@ -9,11 +9,12 @@ import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 import { Button } from '../components/Button';
 
-// import { useAuth } from '../hooks/useAuth';
 import { useRoom } from '../hooks/useRoom';
 
 import '../styles/room.scss';
+
 import { database } from '../services/firebase';
+import { Tooltip } from 'antd';
 
 
 type RoomParams = {
@@ -21,7 +22,6 @@ type RoomParams = {
 }
 
 export function AdminRoom() {
-  // const { user } = useAuth();
   const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;
@@ -97,12 +97,12 @@ export function AdminRoom() {
                     </button>
                   </>
                 )}
-                <button
-                  type="button"
-                  onClick={() => handleDeleteQuestion(question.id)}
-                >
-                  <img src={deleteImg} alt="Remover pergunta" />
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteQuestion(question.id)}
+                  >
+                    <img src={deleteImg} alt="Remover pergunta" />
+                  </button>
               </Question>
             );
           })}
